@@ -1,14 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-const AppContext = createContext({
-  user: null,
-  token: null,
-  setUser: () => {},
-  setToken: () => {},
-})
+export const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-  const [user, setUser] = useState({})
+  const adminAcc = { username: 'admin', password: 'admin' }
   const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
 
   const setToken = (token) => {
@@ -21,14 +16,11 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
-      user,
       token,
-      setUser,
-      setToken
+      setToken,
+      adminAcc
     }}>
       {children}
     </AppContext.Provider>
   )
 }
-
-export const useAppContext = () => useContext(AppContext)

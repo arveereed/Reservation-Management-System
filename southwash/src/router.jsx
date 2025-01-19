@@ -2,16 +2,22 @@ import { createBrowserRouter } from "react-router-dom";
 import NotFound from './pages/NotFound.jsx'
 import Home from "./pages/Home.jsx";
 import Login from './pages/Login.jsx'
-import Signup from './pages/Signup.jsx'
+import AdminLayout from "./components/AdminLayout.jsx";
 import GuestLayout from "./components/GuestLayout.jsx";
-import DefaultLayout from "./components/DefaultLayout.jsx";
 import Booknow from "./pages/book/Booknow.jsx";
+import CreatePost from "./pages/admin/CreatePost.jsx";
+import Dashboard from "./pages/admin/Dashboard.jsx";
+import { CustomerBooking } from "./pages/admin/CustomerBooking.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <DefaultLayout />,
+    element: <GuestLayout />,
     children: [
+      {
+        path: "/login",
+        element: <Login />
+      },
       {
         path: "/",
         element: <Home />,
@@ -28,16 +34,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <GuestLayout />,
+    element: <AdminLayout />,
     children: [
       {
-        path: "/login",
-        element: <Login />
+        path: "/dashboard",
+        element: <Dashboard />,
       },
       {
-        path: "/signup",
-        element: <Signup />
-      }
+        path: "/create-post",
+        element: <CreatePost />,
+      },
+      {
+        path: "/customer-booking",
+        element: <CustomerBooking />,
+      },
     ]
   },
   {

@@ -68,3 +68,49 @@
 .custom-shape-divider-bottom-1736322319 .shape-fill {
   fill: #7ADEFB;
 }
+
+
+input[type="file"] {
+	position: absolute;
+	right: -9999px;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.label-input {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	border-radius: 10px;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+div {
+	&.files {
+		background: white;
+		padding: 1rem;
+		margin:1rem 0;
+		border-radius:10px;
+		ul{
+			list-style:none;
+			padding:0;
+			max-height:150px;
+			overflow:auto;
+			li{
+				padding:0.5rem 0;
+				padding-right:2rem;
+				position:relative;
+				i{
+					cursor:pointer;
+					position:absolute;
+					top:50%;
+					right:0;
+					transform:translatey(-50%);
+				}
+			}
+		}
+	}
+}
