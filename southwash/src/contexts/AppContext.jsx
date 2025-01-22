@@ -1,10 +1,21 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext,  useEffect,  useState } from "react";
+import axios from 'axios';
+import useAxiosFetch from '../hooks/useAxiosFetch'
+import { deletePost } from "../api/posts";
 export const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
+  const { data, fetchError, isLoading } = useAxiosFetch("http://localhost:3500/posts");
+
   const adminAcc = { username: 'admin', password: 'admin' }
   const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
+  const [posts, setPosts] = useState([]);
+  
+  useEffect(() => {
+    if (data) {
+      setPosts(data);
+    }
+  }, [data]);
 
   const setToken = (token) => {
     _setToken(token)
@@ -14,11 +25,21 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  const handleDelete = (id) => {
+    deletePost(id)
+    setPosts(posts.filter((post) => post.id !== id))
+  }
+
+
   return (
     <AppContext.Provider value={{
       token,
       setToken,
-      adminAcc
+      adminAcc,
+      posts,
+      setPosts,
+      isLoading,
+      handleDelete
     }}>
       {children}
     </AppContext.Provider>

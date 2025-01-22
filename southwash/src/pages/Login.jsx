@@ -21,7 +21,6 @@ function Login() {
       setErrors('The credentials is not correct.')
       return
     }
-    console.log('welcvome')
     setErrors('')
     setToken('yourValidToken')
   }

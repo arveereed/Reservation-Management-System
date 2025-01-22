@@ -12,10 +12,6 @@ function GuestLayout() {
   const { token, setToken } = useContext(AppContext)
   const [toggle, setToggle] = useState(localStorage.getItem('currentPage') || 'Home')
 
-  if (!token) {
-    return <Navigate to="/login" />
-  }
-
   useEffect(() => {
     localStorage.setItem('currentPage', toggle)
   }, [toggle])
@@ -30,10 +26,14 @@ function GuestLayout() {
     setToggle(link)
   }
 
+  if (!token) {
+    return <Navigate to="/login" />
+  }
+
   return (
     <div>
       <Header />
-      <main className="relative grid place-content-center min-h-[93vh]">
+      <main className="relative grid place-content-center min-h-[93vh] ">
         <aside className="z-40 py-[70px] bg-[#77CBFF] absolute right-0 top-0 bottom-0 w-[278px]">
           <div className="flex flex-col justify-between h-full">
             <div>

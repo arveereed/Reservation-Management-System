@@ -3,17 +3,40 @@ import fb from '../../assets/fb.png'
 import ig from '../../assets/ig.png'
 import inimg from '../../assets/inimg.png'
 import deleteImg from '../../assets/close.png'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { format } from "date-fns";
+import { createPost} from '../../api/posts';
+import { AppContext } from '../../contexts/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 function CreatePost() {
+  const { posts, setPosts } = useContext(AppContext)
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    images: []
+    images: [],
   });
 
-  const createPost = (formData) => {
-    
+  const handleSubmit = (formData) => {
+    const id = posts.length
+      ? String(Number(posts[posts.length - 1].id) + 1)
+      : "1";
+    const datetime = format(new Date(), "MMM dd, yyyy pp")
+    const newPost = {
+      id,
+      ...formData,
+      datetime,
+    }
+    createPost(newPost)
+    setPosts([ ...posts, newPost])
+    setFormData({
+      title: '',
+      description: '',
+      images: [],
+    })
+    navigate('/dashboard')
   }
 
   // Handle file selection
@@ -65,7 +88,7 @@ function CreatePost() {
   };
 
   return (
-    <div className="font-['Poppins'] bg-[#D0F6FF] p-[30px] w-[570px] z-40 mr-[278px] rounded-lg">
+    <div className="font-['Poppins'] bg-[#D0F6FF] p-[30px] w-[570px] z-30 mr-[278px] rounded-lg">
       <p>Create Post</p>
       <div className='flex w-1/2 items-center space-x-4 mt-[40px]'>
         <small>Sharing to</small>
@@ -120,7 +143,7 @@ function CreatePost() {
         )}
 
         <div className='grid place-content-end mt-3'>
-          <button onClick={() => createPost(formData)} className='bg-[#0A58A2] text-white text-[12px] px-7 py-2 rounded-lg'>Publish</button>
+          <button onClick={() => handleSubmit(formData)} className='bg-[#0A58A2] text-white text-[12px] px-7 py-2 rounded-lg'>Publish</button>
         </div>
       </form>
     </div>

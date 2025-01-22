@@ -114,3 +114,18 @@ div {
 		}
 	}
 }
+
+
+.dropdown button,
+.dropdown a{
+ @apply hover:bg-[#5C432E] hover:text-white pl-4 pr-8 py-2 mb-1 grid place-content-center
+}
+
+.dropdown a:hover {
+  background-color: #5C432E;
+  color: white;
+}
+
+.dropdown a:last-child {
+  border-bottom: none;
+}
