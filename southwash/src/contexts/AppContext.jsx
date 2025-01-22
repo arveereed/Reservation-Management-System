@@ -5,7 +5,7 @@ import { deletePost } from "../api/posts";
 export const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-  const { data, fetchError, isLoading } = useAxiosFetch("https://render-json-server-jfsy.onrender.com/https://render-json-server-jfsy.onrender.com/posts");
+  const { data, fetchError, isLoading } = useAxiosFetch("https://render-json-server-jfsy.onrender.com/posts");
 
   const adminAcc = { username: 'admin', password: 'admin' }
   const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
