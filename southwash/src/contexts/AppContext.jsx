@@ -5,7 +5,7 @@ import { deletePost } from "../api/posts";
 export const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-  const { data, fetchError, isLoading } = useAxiosFetch("http://localhost:3500/posts");
+  const { data, fetchError, isLoading } = useAxiosFetch("https://render-json-server-jfsy.onrender.com/https://render-json-server-jfsy.onrender.com/posts");
 
   const adminAcc = { username: 'admin', password: 'admin' }
   const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
@@ -14,7 +14,7 @@ export const AppProvider = ({ children }) => {
   const [booked, setBooked] = useState([])
   
   const getBooked = async () => {
-    const response = await axios.get('http://localhost:3500/booked')
+    const response = await axios.get('https://render-json-server-jfsy.onrender.com/booked')
     setBooked(response.data)
   }
 
