@@ -56,8 +56,8 @@
       "datetime": "Jan 23, 2025 2:07:25 AM",
       "transactionCode": "mfgItHeV8rkS",
       "serviceType": "Wash, Dry, & Fold",
-      "deliveryDate": "3 Days",
-      "status": "Pending"
+      "deliveryDate": "1 Days",
+      "status": "Delivered"
     },
     {
       "id": "2",
@@ -68,7 +68,7 @@
       "datetime": "Jan 23, 2025 2:08:03 AM",
       "transactionCode": "b8g82r0DWEeP",
       "serviceType": "Wash, Dry, & Fold",
-      "deliveryDate": "3 Days",
+      "deliveryDate": "12 Days",
       "status": "Pending"
     }
   ]

@@ -13,12 +13,12 @@ function Header() {
   const { token } = useContext(AppContext)
   const links = [
     {
-      name: 'About Us',
-      where: '/about-us'
+      name: 'Transaction',
+      where: '/transaction'
     }, 
     {
-      name: 'How it works',
-      where: '/how-it-works'
+      name: 'About Us',
+      where: '/about-us'
     },
     {
       name: 'Contact Us', 
@@ -51,12 +51,12 @@ function Header() {
                 />
               )}
             </div>
-            <div>
+            <Link to={`/home`}>
               <Image 
                 className={`h-[180px] mr-2 ${home && 'mt-[15px]'}`}
                 src={logoname}
               />
-            </div>
+            </Link>
           </div>
         </Navbar.Brand>
         <Nav>
@@ -68,7 +68,7 @@ function Header() {
                   className='h-[40px] w-[40px]'
                 />
               </div>
-              <span className='font-semibold'>Admin</span>
+              <span className='font-semibold'>Admin -ArvsDev</span>
             </div>
           )}
           {!token && (

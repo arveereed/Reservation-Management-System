@@ -45,6 +45,7 @@ function Booknow() {
       transactionCode: uniqueTransac,
       serviceType: 'Wash, Dry, & Fold',
       deliveryDate: '3 Days',
+      amountStatus: '₱200.00 /7kg',
       status: 'Pending'
     }
     setCode(uniqueTransac)

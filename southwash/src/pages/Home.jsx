@@ -10,7 +10,7 @@ import { AppContext } from '../contexts/AppContext';
 
 function Home() {
   const { home } = useParams()
-  const { posts } = useContext(AppContext)
+  const { posts} = useContext(AppContext)
 
   const [currentPage, setCurrentPage] = useState(1)
   const recordsPerPage = 3
@@ -29,7 +29,7 @@ function Home() {
               src={logo}
             />
             <div className='flex place-content-center'>
-              <Link to='/home' className='z-10'>
+              <Link to='/home'  className='z-10'>
                 <button className='bg-[#0A58A2] h-[55px] w-[206px] rounded-full  text-white text-xl font-light shadow-[10px_9px_5px_5px_rgba(0,0,0,0.4)]'>Get started</button>
               </Link>
             </div>

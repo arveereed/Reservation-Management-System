@@ -10,6 +10,11 @@ import Dashboard from "./pages/admin/Dashboard.jsx";
 import { CustomerBooking } from "./pages/admin/CustomerBooking.jsx";
 import EditPost from "./pages/admin/EditPost.jsx";
 import Booked from "./pages/book/Booked.jsx";
+import Faqs from './pages/Faqs.jsx'
+import AboutUs from './pages/AboutUs.jsx'
+import ContactUs from "./pages/ContactUs.jsx";
+import Transaction from "./pages/Transaction.jsx";
+import ShowTransaction from "./pages/ShowTransaction.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,20 +38,24 @@ const router = createBrowserRouter([
         element: <Booknow />,
       },
       {
-        path: "/about-us",
-        element: <Booknow />,
+        path: "/transaction",
+        element: <Transaction />,
       },
       {
-        path: "/how-it-works",
-        element: <Booknow />,
+        path: "/about-us",
+        element: <AboutUs />,
       },
       {
         path: "/contact-us",
-        element: <Booknow />,
+        element: <ContactUs />,
       },
       {
         path: "/faqs",
-        element: <Booknow />,
+        element: <Faqs />,
+      },
+      {
+        path: "/customer-booking/:id",
+        element: <ShowTransaction />,
       },
     ]
   },

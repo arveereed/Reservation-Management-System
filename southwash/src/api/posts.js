@@ -38,3 +38,12 @@ export const createBook = async (newBook) => {
     console.log(err.message);
   }
 };
+
+export const editBook = async (id, updatedPost) => {
+  try {
+    const response = await api.put(`/booked/${id}`, updatedPost);
+    return response.data;
+  } catch (err) {
+    console.log(err.message);
+  }
+};
