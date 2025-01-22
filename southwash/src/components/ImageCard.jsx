@@ -4,9 +4,10 @@ import userProfile from '../assets/me.jpg'
 import dots from '../assets/dots.png'
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AppContext } from '../contexts/AppContext';
+import { Link } from 'react-router-dom';
 
 function ImageCard({ title, description, images, datetime, id }) {
-  const { setPosts, handleDelete } = useContext(AppContext)
+  const { handleDelete, token } = useContext(AppContext)
 
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -33,7 +34,8 @@ function ImageCard({ title, description, images, datetime, id }) {
     <Card className='w-[607px] relative shadow-[3px_3px_10px_2px_rgba(0,0,0,0.4)]' style={{ height: "214px" }}>
       <Card.Body className='flex'>
         <div ref={dropdownRef} className=''>
-          <button 
+          {token && (
+            <button 
             onClick={toggleDropdown} 
             className='z-50 rounded-full absolute h-[10px] top-1 right-1'
           >
@@ -42,13 +44,14 @@ function ImageCard({ title, description, images, datetime, id }) {
               src={dots}
               />
           </button>
+          )}
           {isOpen && (
             <div
             className="absolute right-[-140px] w-[150px] bg-[#77CBFF] rounded-md shadow-lg z-50"
             style={{ animation: "fadeIn 0.2s ease-in-out" }}
           >
             <div className='h-[40px] grid items-center justify-center pt-2 transition-all hover:text-white hover:bg-[#0A58A2]'>
-              <button>Edit post</button>
+              <Link to={`/edit-post/${id}`}><button className='hover:text-white'>Edit post</button></Link>
             </div>
             <div className='bg-[#77CBFF] h-[40px] grid transition-all items-center justify-center hover:text-white  hover:bg-[#0A58A2]'>
               <button onClick={() => handleDelete(id)}>Delete post</button>

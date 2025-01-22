@@ -8,6 +8,7 @@ import Booknow from "./pages/book/Booknow.jsx";
 import CreatePost from "./pages/admin/CreatePost.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import { CustomerBooking } from "./pages/admin/CustomerBooking.jsx";
+import EditPost from "./pages/admin/EditPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,22 @@ const router = createBrowserRouter([
         path: "/:home/:booknow",
         element: <Booknow />,
       },
+      {
+        path: "/about-us",
+        element: <Booknow />,
+      },
+      {
+        path: "/how-it-works",
+        element: <Booknow />,
+      },
+      {
+        path: "/contact-us",
+        element: <Booknow />,
+      },
+      {
+        path: "/faqs",
+        element: <Booknow />,
+      },
     ]
   },
   {
@@ -43,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/create-post",
         element: <CreatePost />,
+      },
+      {
+        path: "/edit-post/:id",
+        element: <EditPost />,
       },
       {
         path: "/customer-booking",

@@ -5,13 +5,31 @@ import Image from 'react-bootstrap/Image';
 import logo from '../assets/Logo.svg'
 import admin from '../assets/admin.png'
 import logoname from '../assets/logoname.png'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
 import { useContext } from 'react';
 
 function Header() {
   const { token } = useContext(AppContext)
-  const links = ['About Us', 'How it works', 'Contact Us', 'FAqs']
+  const links = [
+    {
+      name: 'About Us',
+      where: '/about-us'
+    }, 
+    {
+      name: 'How it works',
+      where: '/how-it-works'
+    },
+    {
+      name: 'Contact Us', 
+      where: '/contact-us'
+    },
+    {
+      name: 'FAqs',
+      where: '/faqs'
+    }
+    
+  ]
   const { home } = useParams()
 
   return (
@@ -20,7 +38,13 @@ function Header() {
         <Navbar.Brand>
           <div className='flex'>
             <div className='flex items-center'>
-              {home || token && (
+              {home && (
+                <Image 
+                  className='h-[66px]'
+                  src={logo}
+                />
+              )}
+              {token && (
                 <Image 
                   className='h-[66px]'
                   src={logo}
@@ -54,7 +78,7 @@ function Header() {
                   i !== links.length - 1 ? 'border-r-[2px] border-[#42b0f5]' : ''
                 }`}>
                   <div>
-                    <Nav.Link><span className='text-[#0A58A2] hover:text-[#114372] transition-all'>{link}</span></Nav.Link>
+                    <Link to={link.where} className='no-underline'><span className='text-[#0A58A2] hover:text-[#114372] transition-all'>{link.name}</span></Link>
                   </div>
                 </div>
               ))}
