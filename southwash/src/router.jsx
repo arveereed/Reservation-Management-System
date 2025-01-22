@@ -9,6 +9,7 @@ import CreatePost from "./pages/admin/CreatePost.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import { CustomerBooking } from "./pages/admin/CustomerBooking.jsx";
 import EditPost from "./pages/admin/EditPost.jsx";
+import Booked from "./pages/book/Booked.jsx";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/customer-booking",
         element: <CustomerBooking />,
+      },
+      {
+        path: "/customer-booking/:id",
+        element: <Booked />,
       },
     ]
   },

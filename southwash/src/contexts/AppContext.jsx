@@ -9,8 +9,20 @@ export const AppProvider = ({ children }) => {
 
   const adminAcc = { username: 'admin', password: 'admin' }
   const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
-  const [posts, setPosts] = useState([]);
   
+  const [posts, setPosts] = useState([]);
+  const [booked, setBooked] = useState()
+  
+  const getBooked = async () => {
+    const response = await axios.get('http://localhost:3500/booked')
+    setBooked(response.data)
+  }
+
+  useEffect(() => {
+    getBooked()
+  }, [])
+  
+
   useEffect(() => {
     if (data) {
       setPosts(data);
@@ -39,7 +51,8 @@ export const AppProvider = ({ children }) => {
       posts,
       setPosts,
       isLoading,
-      handleDelete
+      handleDelete,
+      booked, setBooked
     }}>
       {children}
     </AppContext.Provider>

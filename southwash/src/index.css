@@ -174,7 +174,3 @@ div {
     transform: translate3d(0, 0, 0);
   }
 }
-
-/* Repeat similar modifications for other classes like .flatpickr-months, .flatpickr-day, etc. */
-
-/* Use camelCase for class names */
