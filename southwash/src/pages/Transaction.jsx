@@ -26,7 +26,7 @@ function Transaction() {
   return (
     <div className="min-h-[93vh] z-50">
       <input
-        className="px-4 py-2 text-[18px] w-[400px] rounded-md outline-none"
+        className="px-4 mt-[35px] py-2 text-[18px] w-[400px] rounded-md outline-none"
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}

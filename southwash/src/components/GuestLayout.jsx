@@ -19,7 +19,7 @@ function DefaultLayout() {
   return (
     <div>
       <Header />
-      <main className='grid place-content-center min-h-screen relative'>
+      <main className='grid place-content-center min-h-[93vh] relative'>
         <img className='absolute top-[150px] left-0 z-10' src={pawtop} alt="" />
         <img className='absolute bottom-[150px] right-8 z-10' src={pawbelow} alt="" />
         <div className="custom-shape-divider-top-1736321645">
